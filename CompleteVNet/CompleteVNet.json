@@ -262,7 +262,7 @@
           },
           "subnets": [
             {
-                "name": "Gateway",
+                "name": "GatewaySubnet",
                 "properties": {
                   "addressPrefix": "[parameters('GWSubnetPrefix')]"
                 }
