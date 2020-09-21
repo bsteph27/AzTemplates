@@ -8,13 +8,13 @@ Policy Name
 * A security contact email address should be provided for your subscription
 * A security contact phone number should be provided for your subscription
 * Enable Monitoring in Azure Security Center
-* * Audit usage of custom RBAC rules
+* Audit usage of custom RBAC rules
 * Allowed locations
 * MFA should be enabled on accounts with owner permissions on your subscription
 * Require a tag on resources (ex. BuildDate)
 * Require a tag on resource groups (ex. AppSvc)
 * Inherit a tag from the subscription if missing (ex. EnviTier)
-* * Inherit a tag from the resource group if missing (ex. AppSvc)
+* Inherit a tag from the resource group if missing (ex. AppSvc)
 * Azure Monitor log profile should collect logs for categories 'write,' 'delete,' and 'action'
 * Azure Monitor solution 'Security and Audit' must be deployed
 * Azure subscriptions should have a log profile for Activity Log
