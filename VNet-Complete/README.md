@@ -8,6 +8,7 @@ Provisions a new virtual network (VNet) and subnets (snet) with network security
 
 Variables will be defined upon execution and include:
 * Azure Region
-* VNet Name
 * Address Prefix for VNet and snets
+* VNet Name
+* snet Names
 * NSG Names

@@ -20,63 +20,91 @@
         "type": "string",
         "defaultValue": "10.172.0.0/24",
         "metadata": {
-          "description": "This is CIDR prefix for the Gateway Subnet"
+          "description": "This is CIDR prefix for the Gateway subnet"
+        }
+      },
+      "snetMgtName": {
+        "type": "string",
+        "defaultValue": "snet-LZ01-Mgt",
+        "metadata": {
+          "description": "This is name of the Management subnet"
         }
       },
       "MgtSubnetPrefix": {
         "type": "string",
         "defaultValue": "10.172.10.0/24",
         "metadata": {
-          "description": "This is CIDR prefix for the Management Subnet"
+          "description": "This is CIDR prefix for the Management subnet"
+        }
+      },
+      "snetAppName": {
+        "type": "string",
+        "defaultValue": "snet-LZ01-App",
+        "metadata": {
+          "description": "This is name of the Application subnet"
         }
       },
       "AppSubnetPrefix": {
         "type": "string",
         "defaultValue": "10.172.20.0/24",
         "metadata": {
-          "description": "This is CIDR prefix for the Application Subnet"
+          "description": "This is CIDR prefix for the Application subnet"
+        }
+      },
+      "snetDBName": {
+        "type": "string",
+        "defaultValue": "snet-LZ01-DB",
+        "metadata": {
+          "description": "This is name of the Database subnet"
         }
       },
       "DBSubnetPrefix": {
         "type": "string",
         "defaultValue": "10.172.30.0/24",
         "metadata": {
-          "description": "This is CIDR prefix for the Database Subnet"
+          "description": "This is CIDR prefix for the Database subnet"
+        }
+      },
+      "snetDMZName": {
+        "type": "string",
+        "defaultValue": "snet-LZ01-DMZ",
+        "metadata": {
+          "description": "This is name of the DMZ subnet"
         }
       },
       "DMZSubnetPrefix": {
         "type": "string",
         "defaultValue": "10.172.99.0/24",
         "metadata": {
-          "description": "This is CIDR prefix for the DMZ Subnet"
+          "description": "This is CIDR prefix for the DMZ subnet"
         }
       },
       "MgtNSGName": {
         "type": "string",
         "defaultValue": "NSG-LZ01-Mgt",
         "metadata": {
-          "description": "This is name of the NetworkSecurityGroup that will be assigned to Management Subnet"
+          "description": "This is name of the NetworkSecurityGroup that will be assigned to Management subnet"
         }
       },
       "DMZNSGName": {
         "type": "string",
         "defaultValue": "NSG-LZ01-DMZ",
         "metadata": {
-          "description": "This is name of the networkSecurityGroup that will be assigned to DMZ Subnet"
+          "description": "This is name of the networkSecurityGroup that will be assigned to DMZ subnet"
         }
       },
       "AppNSGName": {
         "type": "string",
         "defaultValue": "NSG-LZ01-App",
         "metadata": {
-          "description": "This is name of the networkSecurityGroup that will be assigned to Application Subnet"
+          "description": "This is name of the networkSecurityGroup that will be assigned to Application subnet"
         }
       },
       "DBNSGName": {
         "type": "string",
         "defaultValue": "NSG-LZ01-DB",
         "metadata": {
-          "description": "This is name of the networkSecurityGroup that will be assigned to Database Subnet"
+          "description": "This is name of the networkSecurityGroup that will be assigned to Database subnet"
         }
       }
     },
@@ -268,7 +296,7 @@
                 }
               },
             {
-                "name": "snet-Mgt",
+                "name": "[parameters('snetMgtName')]",
                 "properties": {
                   "addressPrefix": "[parameters('MgtSubnetPrefix')]",
                   "networkSecurityGroup": {
@@ -277,7 +305,7 @@
                 }
               },
               {
-              "name": "snet-DMZ",
+                "name": "[parameters('snetDMZName')]",
               "properties": {
                 "addressPrefix": "[parameters('DMZSubnetPrefix')]",
                 "networkSecurityGroup": {
@@ -286,7 +314,7 @@
               }
             },
             {
-              "name": "snet-App",
+              "name": "[parameters('snetAppName')]",
               "properties": {
                 "addressPrefix": "[parameters('AppSubnetPrefix')]",
                 "networkSecurityGroup": {
@@ -295,7 +323,7 @@
               }
             },
             {
-              "name": "snet-DB",
+              "name": "[parameters('snetDBName')]",
               "properties": {
                 "addressPrefix": "[parameters('DBSubnetPrefix')]",
                 "networkSecurityGroup": {
