@@ -94,7 +94,19 @@
             "name": "[concat(parameters('vnet-name'), '/', parameters('bastion-subnet-name'))]",
             "location": "[resourceGroup().location]",
             "properties": {
-                "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]"
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('vnet-ip-prefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('bastion-subnet-name')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]"
+                        }
+                    }
+                ]
             }
         },
         {
