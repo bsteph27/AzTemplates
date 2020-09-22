@@ -91,10 +91,9 @@
         },
         {
             "condition": "[equals(parameters('vnet-new-or-existing'), 'existing')]",
-            "apiVersion": "2020-05-01",
-            "type": "Microsoft.Network/virtualNetworks/subnets",
-            "id": "[concat('/subscriptions/', variables('subID'), '/resourceGroups/', variables('rgName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('vnet-name'), '/subnets/', parameters('bastion-subnet-name'))]",
             "name": "[concat(parameters('bastion-subnet-name'))]",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-05-01",
             "location": "[resourceGroup().location]",
             "properties": {
                 "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]",
