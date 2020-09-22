@@ -27,13 +27,6 @@
                 "description": "Specify whether to provision new vnet or deploy to existing vnet"
             }
         },
-        "bastion-subnet-name": {
-            "type": "string",
-            "defaultValue": "snet-LZ01-Bastion",
-            "metadata": {
-                "description": "Name of new subnet for Azure Bastion"
-            }
-        },
         "bastion-subnet-ip-prefix": {
             "type": "string",
             "defaultValue": "10.172.11.0/24",
@@ -79,7 +72,7 @@
                 },
                 "subnets": [
                     {
-                        "name": "[parameters('bastion-subnet-name')]",
+                        "name": "AzureBastionSubnet",
                         "properties": {
                             "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]"
                         }
@@ -91,7 +84,7 @@
             "condition": "[equals(parameters('vnet-new-or-existing'), 'existing')]",
             "apiVersion": "2020-05-01",
             "type": "Microsoft.Network/virtualNetworks/subnets",
-            "name": "[concat(parameters('vnet-name'), '/', parameters('bastion-subnet-name'))]",
+            "name": "[concat(parameters('vnet-name'), '/AzureBastionSubnet')]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]"
@@ -105,7 +98,7 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), parameters('bastion-subnet-name'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), 'AzureBastionSubnet')]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -113,7 +106,7 @@
                         "name": "IpConf",
                         "properties": {
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), parameters('bastion-subnet-name'))]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), 'AzureBastionSubnet')]"
                             },
                             "publicIPAddress": {
                                 "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('public-ip-address-name'))]"
