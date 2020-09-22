@@ -50,9 +50,7 @@
         }
     },
     "variables": {
-        "public-ip-address-name": "[concat(parameters('bastion-host-name'),'-pip')]",
-        "subID": "[subscription().id]",
-        "rgName": "[resourceGroup().name]"
+        "public-ip-address-name": "[concat(parameters('bastion-host-name'),'-pip')]"
     },
     "resources": [
         {
@@ -91,14 +89,12 @@
         },
         {
             "condition": "[equals(parameters('vnet-new-or-existing'), 'existing')]",
-            "name": "[concat(parameters('bastion-subnet-name'))]",
-            "type": "Microsoft.Network/virtualNetworks/subnets",
-            "apiVersion": "2020-05-01",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]",
-                "provisioningState": "Succeeded"
-            }
+                "apiVersion": "2020-05-01",
+                "type": "Microsoft.Network/virtualNetworks/subnets",
+                "name": "[concat(parameters('vnet-name'), '/', parameters('bastion-subnet-name'))]",
+                "properties": {
+                    "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]"
+                }
         },
         {
             "apiVersion": "2020-05-01",
