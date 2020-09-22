@@ -43,7 +43,19 @@
         }
     },
     "variables": {
-        "public-ip-address-name": "[concat(parameters('bastion-host-name'),'-pip')]"
+        "public-ip-address-name": "[concat(parameters('bastion-host-name'),'-pip')]",
+
+
+
+
+
+        "existingVNetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]",
+        "subnetId": "[concat(variables('existingVNetID'),'/subnets/AzureBastionSubnet')]"
+
+
+
+
+
     },
     "resources": [
         {
@@ -89,7 +101,7 @@
 
 
 
-            "id": "[resourceId('Microsoft.Network/virtualNetworks/', parameters('vnet-name'), '/subnets/AzureBastionSubnet')]",
+            "id": "[variables('subnetId')]",
 
 
 
