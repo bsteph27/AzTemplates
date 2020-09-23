@@ -2,6 +2,24 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "vnet-new-or-existing": {
+            "type": "string",
+            "allowedValues": [
+                "new",
+                "existing"
+            ],
+            "defaultValue": "existing",
+            "metadata": {
+                "description": "Specify whether to provision new vnet or deploy to existing vnet. If 'new' is selected then all resources will be deployed to the same Resource Group"
+            }
+        },
+        "vnet-rg": {
+            "type": "string",
+            "defaultValue": "rg-LZ01-vnet",
+            "metadata": {
+                "description": "If the VNet is existing, provide the name of its Resource Group"
+            }
+        },
         "vnet-name": {
             "type": "string",
             "defaultValue": "VNet-LZ01",
@@ -16,15 +34,11 @@
                 "description": "IP prefix for available addresses in vnet address space"
             }
         },
-        "vnet-new-or-existing": {
+        "bastion-host-name": {
             "type": "string",
-            "allowedValues": [
-                "new",
-                "existing"
-            ],
-            "defaultValue": "existing",
+            "defaultValue": "Bastion-LZ01",
             "metadata": {
-                "description": "Specify whether to provision new vnet or deploy to existing vnet"
+                "description": "Name of Azure Bastion resource"
             }
         },
         "bastion-subnet-ip-prefix": {
@@ -33,20 +47,11 @@
             "metadata": {
                 "description": "Bastion subnet IP prefix MUST be within vnet IP prefix address space"
             }
-        },
-        "bastion-host-name": {
-            "type": "string",
-            "defaultValue": "Bastion-LZ01",
-            "metadata": {
-                "description": "Name of Azure Bastion resource"
-            }
         }
     },
     "variables": {
         "public-ip-address-name": "[concat(parameters('bastion-host-name'),'-pip')]",
-        "existingVNetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]",
-        "snetType": "[concat(variables('existingVNetID'),'/subnets')]",
-        "subnetId": "[concat(variables('snetType'),'/AzureBastionSubnet')]"
+        "subnet-name": "AzureBastionSubnet"
     },
     "resources": [
         {
@@ -87,8 +92,8 @@
             "condition": "[equals(parameters('vnet-new-or-existing'), 'existing')]",
             "apiVersion": "2020-05-01",
             "type": "Microsoft.Network/virtualNetworks/subnets",
-            "id": "[variables('subnetId')]",
-            "name": "[concat(parameters('vnet-name'), '/AzureBastionSubnet')]",
+            "id": "[concat(parameters('vnet-rg'), '/providers/Microsoft.Network/virtualNetworks/', parameters('vnet-name'), '/', variables('subnet-name'))]",
+            "name": "[concat(variables('subnet-name'))]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]"
