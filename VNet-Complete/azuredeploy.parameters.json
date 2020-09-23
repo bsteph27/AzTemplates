@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworkName": {
+            "value": "VNet-LZ01"
+          },
+          "addressPrefix": {
+            "value": "10.172.0.0/16"
+          },
+          "GWSubnetPrefix": {
+            "value": "10.172.0.0/24"
+          },
+          "snetMgtName": {
+            "value": "snet-LZ01-Mgt"
+          },
+          "MgtSubnetPrefix": {
+            "value": "10.172.10.0/24"
+          },
+          "snetAppName": {
+            "value": "snet-LZ01-App"
+          },
+          "AppSubnetPrefix": {
+            "value": "10.172.20.0/24"
+          },
+          "snetDBName": {
+            "value": "snet-LZ01-DB"
+          },
+          "DBSubnetPrefix": {
+            "value": "10.172.30.0/24"
+          },
+          "snetDMZName": {
+            "value": "snet-LZ01-DMZ"
+          },
+          "DMZSubnetPrefix": {
+            "value": "10.172.99.0/24"
+          },
+          "MgtNSGName": {
+            "value": "NSG-LZ01-Mgt"
+          },
+          "DMZNSGName": {
+            "value": "NSG-LZ01-DMZ"
+          },
+          "AppNSGName": {
+            "value": "NSG-LZ01-App"
+          },
+          "DBNSGName": {
+            "value": "NSG-LZ01-DB"
+        }
+    }
+}
