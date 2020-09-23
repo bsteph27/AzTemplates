@@ -1,0 +1,9 @@
+{
+    "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+    "itemDisplayName": "Azure Bastion as a Service",
+    "description": "This template deploys Azure Bastion",
+    "summary": "This template provisions Azure Bastion and dependent resources.",
+    "githubUsername": "bahnhacker",
+    "dateUpdated": "2020-09-23",
+    "type": "QuickStart"
+  }

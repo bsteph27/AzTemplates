@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnet-new-or-existing": {
+            "value": "existing"
+        },
+        "vnet-name": {
+            "value": "VNet-LZ01"
+        },
+        "vnet-ip-prefix": {
+            "value": "10.172.0.0/16"
+        },
+        "bastion-host-name": {
+            "value": "Bast-LZ01"
+        },
+        "bastion-subnet-ip-prefix": {
+            "value": "10.172.11.0/24"
+      }
+    }
+  }
