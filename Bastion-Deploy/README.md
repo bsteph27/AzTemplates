@@ -11,5 +11,6 @@ ALL resources will be deployed within the SAME Resource Group and Azure Region. 
 
 
 ==================================================
-** Template customized for personal use. Anyone utilizing this script is encouraged to complete thurough review and testing prior to its use. 
+
+Template customized for personal use. Anyone utilizing this script is encouraged to complete thurough review and testing prior to its use. 
 The orginal source is available @: https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion
