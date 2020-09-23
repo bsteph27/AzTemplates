@@ -92,7 +92,7 @@
             "condition": "[equals(parameters('vnet-new-or-existing'), 'existing')]",
             "apiVersion": "2020-05-01",
             "type": "Microsoft.Network/virtualNetworks/subnets",
-            "id": "[concat(parameters('vnet-rg'), '/providers/Microsoft.Network/virtualNetworks/', parameters('vnet-name'), '/', variables('subnet-name'))]",
+            "id": "[concat(parameters('vnet-rg'), 'Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('subnet-name'))]",
             "name": "[concat(variables('subnet-name'))]",
             "location": "[resourceGroup().location]",
             "properties": {
