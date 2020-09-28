@@ -1,0 +1,9 @@
+{
+    "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+    "itemDisplayName": "Azure Policies via Blueprint",
+    "description": "This template creates a Blueprint for Policies",
+    "summary": "This template creates a Blueprint which assigns a standard set of Policies.",
+    "githubUsername": "bahnhacker",
+    "dateUpdated": "2020-09-28",
+    "type": "QuickStart"
+  }
