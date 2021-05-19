@@ -34,7 +34,7 @@
     "functions": [],
     "variables": {
         "newSubnetName": "[concat('snet-', parameters('AppName'))]",
-        "networkSecurityGroupName": "[concat('nsg-', parameters('AppName'))]"
+        "networkSecurityGroupName": "[concat('nsg-', variables('newSubnetName'))]"
     },
     "resources": [
         {
