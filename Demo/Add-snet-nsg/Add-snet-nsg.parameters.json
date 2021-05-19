@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus2"
+        },
+        "existingVNETName": {
+            "value": "vnet-lzeus2"
+        },
+        "newSubnetAddressPrefix": {
+            "value": "10.211.99.0/24"
+        },
+        "AppName": {
+            "value": "tstapp"
+        }
+    }
+}
